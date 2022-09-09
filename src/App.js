@@ -4,14 +4,16 @@ import ItemListContainer  from "./Componentes/ItemListContainer";
 
 
 
+
 const App = () => {
 
-  const greeting = "este es un mensaje para mi pagina"
+  const msj = "este es un mensaje para mi pagina"
      
   return (
     <>
     <Navbar/>
-    <ItemListContainer msj ={greeting} />
+    <ItemListContainer greeting ={msj} />
+    
     </>
   )
 }
