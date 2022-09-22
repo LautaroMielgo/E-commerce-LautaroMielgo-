@@ -1,16 +1,17 @@
 
-import { Image,Text,VStack } from '@chakra-ui/react'
+import React from 'react';
 
 
-const Item = ({product}) => {
+const Item = ({ product }) => {
+    console.log(product)
   return (
-    <VStack>
-    <Text>{product.product}</Text>
-    <Image src={product.imagen}></Image>
-    <Text> ${product.precio}</Text>
-
-    </VStack>
+      <>
+          <img src={product.image} alt="img" />
+          <h3>{product.title}</h3>
+          <p>Precio: ${product.price}</p>
+          <a href='#'>Ver Detalles</a>  
+      </> 
   )
 }
 
-export {Item}
+export default Item;

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Item } from '../Item'
+import  Item  from '../Item'
 
 
-export const Itemlist = ({ listproducts }) => {
+export const Itemlist = ({ listProducts }) => {
   return (
     <>
-      {listproducts.map((prod,i) => <Item key={`${prod.product}-${i}`} product={prod}/>)} 
+      {listProducts.map((prod,i) => <Item key={`${prod.id}-${i}`} product={prod}/>)} 
        
     </>
   )

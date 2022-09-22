@@ -1,23 +1,39 @@
 
 import React from 'react'
 import { ItemCount } from './ItemCount';
-import { products } from '../assets/productos';
-import { customFetch } from '../assets/utiles/customFetch';
 import { useEffect, useState } from 'react';
 import { Itemlist } from './ItemList/Itemlist';
+
+import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
+
 
 
 const ItemListContainer = ({ greeting }) => {
 
-  const [listproducts, setlistproducts] = useState([])
+  const [listProducts, setListProducts] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() =>{
-    customFetch(products)
-    .then(res => setlistproducts(res))
+  useEffect(() => {
 
-  }, [])
+    const getItem = async () => {
 
+      try {
+        const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+        const data = await res.json();
+        setListProducts(data);
+      }
+      catch(err) {
+        console.log("Error:", err);
+        console.error("Error:", err);
+      }
+      finally {
+        setLoading(false);
+      }
+    }
 
+    getItem();
+
+  },[])
 
   const onAdd = (count) => {
     console.log(`Se agregan ${count} productos`);
@@ -26,7 +42,8 @@ const ItemListContainer = ({ greeting }) => {
  return (
   <>
     <h1>bienvenido { greeting }</h1>
-    <Itemlist listproducts={listproducts}/>
+    {loading ? 'cargando' : <Itemlist listProducts={listProducts}/>}
+    <ItemDetailContainer/>
     <ItemCount initial={1} stock={5} onAdd={onAdd} />
   </>
   )
