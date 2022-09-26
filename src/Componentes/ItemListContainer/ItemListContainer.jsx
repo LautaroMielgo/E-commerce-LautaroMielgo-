@@ -1,24 +1,29 @@
 
 import React from 'react'
-import { ItemCount } from './ItemCount';
+import { ItemCount } from '../ItemCount';
 import { useEffect, useState } from 'react';
-import { Itemlist } from './ItemList/Itemlist';
+import { Itemlist } from '../ItemList/Itemlist';
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
+import { useParams } from 'react-router-dom';
+import { API } from '../../constante/api';
 
-import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
 
 
 
 const ItemListContainer = ({ greeting }) => {
 
+  let { id } = useParams();
+
   const [listProducts, setListProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
 
+  useEffect(() => {
+    const url = id ? `${API.CATEGORY}${id}` : API.LIST;
     const getItem = async () => {
 
       try {
-        const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+        const res = await fetch(url);
         const data = await res.json();
         setListProducts(data);
       }
@@ -33,7 +38,7 @@ const ItemListContainer = ({ greeting }) => {
 
     getItem();
 
-  },[])
+  },[id])
 
   const onAdd = (count) => {
     console.log(`Se agregan ${count} productos`);
