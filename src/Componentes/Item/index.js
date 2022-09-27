@@ -1,7 +1,7 @@
 
 import { style } from '@mui/system';
 import React from 'react';
-
+import { Link } from "react-router-dom";
 
 const Item = ({ product }) => {
     console.log(product)
@@ -10,10 +10,14 @@ const Item = ({ product }) => {
           <img style={styles.imagen} src={product.image} alt="img" />
           <h3>{product.title}</h3>
           <p>Precio: ${product.price}</p>
-          <a href='#'>Ver Detalles</a>  
+          <Link to={`/product/${product.id}`}>
+            Ver Detalles
+          </Link> 
       </div> 
-  )
-}
+      )
+    }
+          
+          
 
 export default Item;
 

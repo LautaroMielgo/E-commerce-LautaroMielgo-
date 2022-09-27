@@ -48,8 +48,8 @@ const ItemListContainer = ({ greeting }) => {
   <>
     <h1>bienvenido { greeting }</h1>
     {loading ? 'cargando' : <Itemlist listProducts={listProducts}/>}
-    <ItemDetailContainer/>
     <ItemCount initial={1} stock={5} onAdd={onAdd} />
+    
   </>
   )
 }
