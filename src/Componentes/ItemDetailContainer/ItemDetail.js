@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 const ItemDetail = ({ listProduct }) => {
-  const [isButtonpPressed, setIsButtonpPressed] = useState(false);
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
 
-  const onAdd = (count) => {
-    setIsButtonpPressed(true);
+  const onAdd = () => {
+    setIsButtonPressed(true);
   };
     
 
@@ -27,7 +27,7 @@ const ItemDetail = ({ listProduct }) => {
       </div>
        
       <div className='divContainer'>
-        {!isButtonpPressed ? (
+        {!isButtonPressed ? (
           <ItemCount initial={1} stock={5} onAdd={onAdd} />
         ) : (
           <Link to="/cart">
@@ -52,7 +52,7 @@ imagen:{
 },
 info:{
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
 },
 
   
