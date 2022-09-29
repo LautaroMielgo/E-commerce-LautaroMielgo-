@@ -1,22 +1,60 @@
-import React from 'react';
-
+import React, {useState} from 'react';
+import { ItemCount } from '../ItemCount';
+import { Link } from 'react-router-dom';
 
 
 const ItemDetail = ({ listProduct }) => {
+  const [isButtonpPressed, setIsButtonpPressed] = useState(false);
+
+  const onAdd = (count) => {
+    setIsButtonpPressed(true);
+  };
+    
+
+
+
   return (
     <>
-      <div className='divContainer'>
+      <div style={styles.contenedor} className='divContainer'>
         <h3>{listProduct.category}</h3>
-        <img src={listProduct.image} alt="img" />
+        <img style={styles.imagen} src={listProduct.image} alt="img" />
       </div>
-      <div className='divContainer'>
+
+      <div style={styles.info}>
         <h4>{listProduct.title}</h4>
         <p>{listProduct.description}</p>
-       
         <p className='price'>Precio: ${listProduct.price}</p>  
+      </div>
+       
+      <div className='divContainer'>
+        {!isButtonpPressed ? (
+          <ItemCount initial={1} stock={5} onAdd={onAdd} />
+        ) : (
+          <Link to="/cart">
+            <button>Finalizar Compra</button>
+          </Link>
+        )}
       </div> 
     </>
     
   )
 }
 export default ItemDetail
+
+const styles = {
+contenedor: {
+  display : "flex",
+  flexDirection: "row",
+  alingItems: "center",
+},
+imagen:{
+  maxWidth: "25%"
+},
+info:{
+  display: "flex",
+  flexDirection: "row",
+},
+
+  
+}
+
