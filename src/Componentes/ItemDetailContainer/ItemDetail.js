@@ -1,41 +1,49 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { ItemCount } from '../ItemCount';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/CartContext';
 
 
 const ItemDetail = ({ listProduct }) => {
+  
   const [isButtonPressed, setIsButtonPressed] = useState(false);
-
-  const onAdd = () => {
+  const { addToCart, cartList } = useCartContext();
+  
+  const onAdd = (quantity) => {
+    addToCart(listProduct, quantity);
     setIsButtonPressed(true);
-  };
+  }
     
+
+  
 
 
 
   return (
-    <>
-      <div style={styles.contenedor} className='divContainer'>
+    <div style={styles.contenedor}>
+
+      <div style={styles.divcont}>
         <h3>{listProduct.category}</h3>
         <img style={styles.imagen} src={listProduct.image} alt="img" />
       </div>
 
-      <div style={styles.info}>
+      <div style={styles.divcont}>
         <h4>{listProduct.title}</h4>
         <p>{listProduct.description}</p>
         <p className='price'>Precio: ${listProduct.price}</p>  
-      </div>
        
-      <div className='divContainer'>
+      
         {!isButtonPressed ? (
           <ItemCount initial={1} stock={5} onAdd={onAdd} />
-        ) : (
-          <Link to="/cart">
+          ) : (
+            <Link to="/cart">
             <button>Finalizar Compra</button>
           </Link>
         )}
-      </div> 
-    </>
+        
+        </div>
+       
+    </div>
     
   )
 }
@@ -46,15 +54,20 @@ contenedor: {
   display : "flex",
   flexDirection: "row",
   alingItems: "center",
+  
 },
 imagen:{
-  maxWidth: "25%"
+  maxWidth: "40%"
 },
-info:{
-  display: "flex",
-  flexDirection: "column",
-},
+
+
+divcont : {
+  display : "flex",
+  width : "40%",
+  flexDirection : "column",
+  justifyContent : "center",
+  alignItems : "center",
+}
 
   
 }
-

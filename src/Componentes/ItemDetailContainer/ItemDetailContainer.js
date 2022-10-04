@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
           try {
             const res = await fetch(url);
             const data = await res.json();
-            setListProduct(data);
+            setListProduct({...data, stock: Math.floor(Math.random() * 20)});
           }
           catch(err) {
             console.log("Error:", err);

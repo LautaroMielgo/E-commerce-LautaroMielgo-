@@ -1,8 +1,19 @@
 import React from 'react'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useCartContext } from '../../context/CartContext';
 
-export const CartWidget = () => {
+
+const CartWidget = () => {
+
+  const { totalQuantity } = useCartContext();
+
   return (
-      <ShoppingCartIcon/>
+    <div>
+      <AddShoppingCartIcon fontSize="large"/>
+      <p className='totalQuantity'>{totalQuantity()}</p>
+    </div>
   )
 }
+
+export default CartWidget;
+

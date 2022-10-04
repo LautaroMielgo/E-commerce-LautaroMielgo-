@@ -1,11 +1,11 @@
 
+
 import React from 'react'
-import { ItemCount } from '../ItemCount';
 import { useEffect, useState } from 'react';
 import { Itemlist } from '../ItemList/Itemlist';
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 import { useParams } from 'react-router-dom';
 import { API } from '../../constante/api';
+
 
 
 
