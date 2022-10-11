@@ -5,10 +5,11 @@ import  Item  from '../Item'
 export const Itemlist = ({ listProducts }) => {
   return (
     <div style={styles.container}>
-      {listProducts.map((prod,i) => <Item key={`${prod.id}-${i}`} product={prod}/>)} 
-       
+        {listProducts.map((listProducts) =>
+            <Item key={listProducts.id} listProducts={listProducts} />
+        )}
     </div>
-  )
+)
 }
 
 const styles = {

@@ -14,17 +14,21 @@ import { getDocs, collection, query, where }from 'firebase/firestore'
 
 const ItemListContainer = ({ greeting }) => {
 
-  let { id } = useParams();
-
+  const { id } = useParams();
+  const { category} = useParams();
   const [listProducts, setListProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
 
 useEffect(() => {
-  const productCollection = collection(db,'productList');
-  const q = query(productCollection, where("category", "==", "jewelery"));
+  const productCollection = collection(db,"productList");
+  const q = query(productCollection, where("category", "==", `${category}`));
+
+  let url = (category === undefined ? productCollection : q )
+
+
    
-  getDocs(productCollection)
+  getDocs(url)
     .then((data)=>{
       
   const lista = data.docs.map((product)=>{
@@ -40,7 +44,7 @@ useEffect(() => {
 })
 
 
-  },[id])
+  },[category])
 
   const onAdd = (count) => {
     console.log(`Se agregan ${count} productos`);

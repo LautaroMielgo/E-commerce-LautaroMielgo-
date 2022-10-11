@@ -7,15 +7,15 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
-const Item = ({ product }) => {
+const Item = ({ listProducts }) => {
   return (
     <Card sx={{ maxWidth: 345 }} style={styles.container}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={product.image}
-          alt={product.title}
+          image={listProducts.image}
+          alt={listProducts.title}
         />
         <CardContent>
           <Typography
@@ -24,15 +24,15 @@ const Item = ({ product }) => {
             component="div"
             style={styles.title}
           >
-            {product.title}
+            {listProducts.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            ${product.price}
+            ${listProducts.price}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/product/${listProducts.id}`}>
           <Button size="small" color="primary">
             Ver Detalles
           </Button>
