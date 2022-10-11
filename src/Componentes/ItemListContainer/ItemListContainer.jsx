@@ -21,7 +21,7 @@ const ItemListContainer = ({ greeting }) => {
 
 
 useEffect(() => {
-  const productCollection = collection(db,"productList");
+  const productCollection = collection(db,'product');
   const q = query(productCollection, where("category", "==", `${category}`));
 
   let url = (category === undefined ? productCollection : q )
@@ -34,7 +34,7 @@ useEffect(() => {
   const lista = data.docs.map((product)=>{
     return {
       ...product.data(),
-      id : listProducts.id
+      id : product.id
     }
   })
   setListProducts(lista);
