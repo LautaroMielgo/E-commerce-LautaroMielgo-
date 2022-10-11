@@ -1,10 +1,12 @@
-
-
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { Itemlist } from '../ItemList/Itemlist';
 import { useParams } from 'react-router-dom';
-import { API } from '../../constante/api';
+import { db } from '../../firebase/firebase';
+import { getDocs, collection, query, where }from 'firebase/firestore'
+
+
+
 
 
 
@@ -18,25 +20,25 @@ const ItemListContainer = ({ greeting }) => {
   const [loading, setLoading] = useState(true)
 
 
-  useEffect(() => {
-    const url = id ? `${API.CATEGORY}${id}` : API.LIST;
-    const getItem = async () => {
-
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        setListProducts(data);
-      }
-      catch(err) {
-        console.log("Error:", err);
-        console.error("Error:", err);
-      }
-      finally {
-        setLoading(false);
-      }
+useEffect(() => {
+  const productCollection = collection(db,'productList');
+  const q = query(productCollection, where("category", "==", "jewelery"));
+   
+  getDocs(productCollection)
+    .then((data)=>{
+      
+  const lista = data.docs.map((product)=>{
+    return {
+      ...product.data(),
+      id : listProducts.id
     }
+  })
+  setListProducts(lista);
+})
+.finally(()=>{
+  setLoading(false);
+})
 
-    getItem();
 
   },[id])
 

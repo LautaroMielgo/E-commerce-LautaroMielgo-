@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { ItemCount } from '../ItemCount';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext';
@@ -7,7 +7,7 @@ import { useCartContext } from '../../context/CartContext';
 const ItemDetail = ({ listProduct }) => {
   
   const [isButtonPressed, setIsButtonPressed] = useState(false);
-  const { addToCart, cartList } = useCartContext();
+  const { addToCart} = useCartContext();
   
   const onAdd = (quantity) => {
     addToCart(listProduct, quantity);
