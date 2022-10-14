@@ -5,6 +5,7 @@ import ItemDetailContainer from "./Componentes/ItemDetailContainer/ItemDetailCon
 import { CartView } from "./Componentes/CartView/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartContextProvider } from './context/CartContext';
+import Formularios from "./formulario/formularios";
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/category/:category' element={<ItemListContainer greeting={msj} />}/>
         <Route path='/product/:id' element={ <ItemDetailContainer />}/>
         <Route path='/cart' element={<CartView />}/>
+        <Route path='/formularios' element={<Formularios />}/>
       </Routes>
 
     </CartContextProvider>

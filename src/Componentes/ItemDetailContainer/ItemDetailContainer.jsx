@@ -17,7 +17,6 @@ const ItemDetailContainer = () => {
       useEffect(() => {
         const productCollection = collection(db, 'product');
         const docRef = doc(productCollection,id)
-        console.log(docRef);
         getDoc(docRef)
         .then((resultado) => {
           setlistProduct(

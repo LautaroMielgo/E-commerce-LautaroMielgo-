@@ -46,7 +46,9 @@ export function CartContextProvider({ children }) {
         cleanCart,
         totalPrice,
         totalQuantity,
-        cartList
+        cartList,
+        
+        
     }}>
         {children}
     </CartContext.Provider>
