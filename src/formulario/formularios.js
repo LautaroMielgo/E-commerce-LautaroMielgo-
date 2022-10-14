@@ -2,16 +2,16 @@ import React, {useState} from 'react'
 import { db } from '../firebase/firebase';
 import { collection, addDoc, serverTimestamp, } from "firebase/firestore";
 import { useCartContext } from '../context/CartContext';
-
+import { Link } from "react-router-dom";
 const Formularios = () => {
 
 const { cartList, totalPrice , cleanCart } = useCartContext();
 const [nombre, setnombre] = useState('');
 const [usuarios, setusuarios] = useState([]);
 const [apellido, setapellido] = useState('')
-const [apellidos, setapellidos] = useState([]);
+
 const [Email, setEmail] = useState('');
-const [Emails, setEmails] = useState([]);
+
 
 
 
@@ -29,7 +29,7 @@ const comprador = {
         items: cartList,
         date: serverTimestamp(),
         price: totalPrice(),
-        
+
         
         
       })
@@ -38,6 +38,7 @@ const comprador = {
         
         cleanCart();
       })
+      alert('compra realizada con exito')
     }
 
 
@@ -53,9 +54,10 @@ setEmail(e.target.value)
 
 
 const userschange = () => {
-setusuarios([...nombre, usuarios]);
-setapellidos([...apellido, apellidos]);
-setEmails([...Email, Emails]);
+
+console.log(usuarios)
+setusuarios(...usuarios, {nombre,apellido,Email});
+
 };
 
 
@@ -71,7 +73,12 @@ setEmails([...Email, Emails]);
       <>
           <p className='price'>Precio Total: ${totalPrice()}</p>
           <button onClick={cleanCart}>Vaciar carrito</button>
-          <button onClick={finalizarCompra}>finalizarCompra</button>
+        
+           
+        <Link to="/">
+        <button onClick={finalizarCompra}>finalizarCompra</button>
+          </Link>
+        
         </>
         
 </div>
