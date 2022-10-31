@@ -19,7 +19,7 @@ export const CartView = () => {
       {cartList.map(prod => 
               <TableRow key={prod.id}>
                 <TableCell align="center" className='displayNone'>
-                  <img src={prod.image} alt="img"/>
+                  <img  src={prod.image} alt="img"/>
                 </TableCell>
                 <TableCell align="center" className='bodyFont'>{prod.title}</TableCell>
                 <TableCell align="center" className='bodyFont'>{prod.quantity}</TableCell>
@@ -48,3 +48,4 @@ export const CartView = () => {
     </>
   );
 };
+

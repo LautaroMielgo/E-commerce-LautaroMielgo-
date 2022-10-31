@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
 import { db } from '../firebase/firebase';
-import { collection, addDoc, serverTimestamp, } from "firebase/firestore";
+import { collection, addDoc,doc,updateDoc, serverTimestamp, } from "firebase/firestore";
 import { useCartContext } from '../context/CartContext';
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
+
+
+
 const Formularios = () => {
 
 const { cartList, totalPrice , cleanCart } = useCartContext();
@@ -35,12 +39,22 @@ const comprador = {
       })
       .then(result=>{
         console.log(result.id);
-        
+        cartList.forEach(producto => {
+          actualizarStock(producto);
+        });
         cleanCart();
+        
       })
-      alert('compra realizada con exito')
+      swal({
+        title: "¡Felicitaciones!",
+        text: "Tu compra ha sido realizada con éxito.",
+        icon: "success",
+      });
     }
-
+    const actualizarStock = (prod) =>{
+      const updateStock = doc(db, "products", prod.id);
+      updateDoc(updateStock,{stock:(prod.stock - prod.quantity )});
+    }
 
 const nombreChange = (e) => {
 setnombre(e.target.value)
