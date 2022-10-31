@@ -34,4 +34,4 @@ Desarrollar un e-commerce que simule la realidad utilizando React JS para presen
 ##Links
 
 [Link al Repositorio](https://github.com/LautaroMielgo/React-Lautaro-Mielgo)
-[Link a la Web](react-lautaromielgo.netlify.app)
+[Link a la Web](https://react-lautaromielgo.netlify.app)
