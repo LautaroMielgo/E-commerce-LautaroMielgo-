@@ -1,4 +1,4 @@
-# Proyecto E-Commerce Tienda Gamer
+# Proyecto E-Commerce 
 
 Mi nombre es Lautaro Mielgo, este proyecto presenta el desarrollo de un E-commerce de una tienda ficticia.
 
