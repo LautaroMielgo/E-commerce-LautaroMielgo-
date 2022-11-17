@@ -1,65 +1,64 @@
 
 import React from 'react';
-import { Link } from "react-router-dom";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
 
 const Item = ({ listProducts }) => {
   return (
-    <Card sx={{ maxWidth: 345 }} style={styles.container}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={listProducts.image}
-          alt={listProducts.title}
-        />
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            style={styles.title}
-          >
-            {listProducts.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            ${listProducts.price}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Link to={`/product/${listProducts.id}`}>
-          <Button size="small" color="primary">
-            Ver Detalles
-          </Button>
-        </Link>
-      </CardActions>
-    </Card>
-  );
+    <CardContainer>
+        <img src={listProducts.image} alt="img" />
+        <h3>{listProducts.title}</h3>
+        <p>Precio: ${listProducts.price}</p>
+        <NavLink to={`/product/${listProducts.id}`}>Ver Detalles</NavLink>
+    </CardContainer> 
+)
 };
           
           
 
 export default Item;
 
-const styles = {
-  container: {
-    width: window.innerHeight > "900" ? "25%" : "90%",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "20",
-    backgroundColor: "rgba(249, 220, 92, 0.3)",
-  },
-  title: {
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    height: "100",
-  },
-};
-
-    
+const CardContainer = styled.div`
+background-color: white;
+width: 330px;
+height: 430px;
+border: solid 1px #e9e9e9;
+border-radius: 8px;
+box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+overflow: hidden;
+margin: 20px;
+text-align: center;
+transition: all 0.25s;
+cursor: pointer;
+&:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+img {
+  width: 300px;
+  height: 220px;
+}
+h3 {
+  font-weight: 600;
+  font-size: 15px;
+}
+p {
+  padding: 1rem;
+  font-size: 16px;
+}
+a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #1EB88D;
+  background-color: #333;
+  padding: 12px;
+  border-radius: 5px;
+}
+a:hover {
+  background-color: #1EB88D;
+  color: #333;
+  padding: 12px;
+  border-radius: 5px;
+}
+`

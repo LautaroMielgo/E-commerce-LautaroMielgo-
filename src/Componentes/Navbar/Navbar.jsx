@@ -1,29 +1,29 @@
 import React from 'react'
-import logo from '../../assets/logo.jpg'
+
 import  CartWidget  from '../CartWidget/CartWidget'
 import { Nav } from './Nav'
 import { Link } from "react-router-dom";
 
 const Navbar = ({ name }) => {
   const categories = [
-    { id: 0, title: "electronics", route: "/category/electronics" },
-    { id: 1, title: "jewelery", route: "/category/jewelery" },
-    { id: 2, title: "men's clothing", route: "/category/men's clothing" },
-    { id: 3, title: "women's clothing", route: "/category/women's clothing" },
+    { id: 0, title: "jordan", route: "/category/jordan" },
+    { id: 1, title: "nike", route: "/category/nike" },
+    { id: 2, title: "adiddas", route: "/category/adiddas" },
+    { id: 3, title: "under", route: "/category/under" },
   ];
  
  
   return (
     <header style={styles.container}>
       <div style={styles.branchContainer}>
-        <Link to="/">
-          <img style={styles.imagen} src={logo} alt="logo" />
+        <Link style={styles.links} to="/">
+        <h1 style={styles.h1}>ZAPATURRAS {name}</h1>
+          
         </Link>
-        <h1>Bienvenido {name}</h1>
       </div>
       <div style={styles.links}>
-        <Nav categories={categories} />
-        <Link to="/cart">
+        <Nav  categories={categories} />
+        <Link style={styles.links} to="/cart">
           <CartWidget />
         </Link>
       </div>
@@ -42,14 +42,28 @@ const styles = {
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
+    
   },
   links: {
     display: "flex",
+    color: '#f8f8ff',
+    textDecoration: 'none',
   },
+  navv: {
+    color: '#1EB88D',
+  },
+    
+    
   imagen: {
-    width: "30%",
+    width: "60%",
+    alignItems: "center",
   },
+  h1: {
+    color: '#f8f8ff',
+  }
 };
+    
+
 
 
 

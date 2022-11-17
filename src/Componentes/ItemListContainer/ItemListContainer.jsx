@@ -4,6 +4,7 @@ import { Itemlist } from '../ItemList/Itemlist';
 import { useParams } from 'react-router-dom';
 import { db } from '../../firebase/firebase';
 import { getDocs, collection, query, where }from 'firebase/firestore'
+import styled from 'styled-components'
 
 
 
@@ -21,7 +22,7 @@ const ItemListContainer = ({ greeting }) => {
 
 
 useEffect(() => {
-  const productCollection = collection(db,'product');
+  const productCollection = collection(db,'listaProductos');
   const q = query(productCollection, where("category", "==", `${category}`));
 
   let url = (category === undefined ? productCollection : q )
@@ -52,12 +53,35 @@ useEffect(() => {
    
  return (
   <>
-    <h1>bienvenido { greeting }</h1>
+  <DivContainer>
+
+    <h1 className='msj'> BIENVENIDO!! { greeting }</h1>
     {loading ? 'cargando' : <Itemlist listProducts={listProducts}/>}
+  </DivContainer>
     
     
   </>
   )
 }
 
+
+
 export default ItemListContainer
+
+
+const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  
+  .msj {
+    margin-bottom: 20px;
+    font-family: "GrandGalaxy";
+    font-size: 4.5rem;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    color: #f8f8ff;
+  }
+`

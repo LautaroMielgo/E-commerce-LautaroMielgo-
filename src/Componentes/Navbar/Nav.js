@@ -14,6 +14,8 @@ export const Nav = ({ categories }) => {
 const styles = {
       links: {
           padding: 10,
+          color: '#f8f8ff',
+          textDecoration: 'none',
       }
   }
  

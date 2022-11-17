@@ -12,7 +12,7 @@ import Formularios from "./formulario/formularios";
 
 const App = () => {
 
-  const msj = "este es un mensaje para mi pagina"
+  const msj = "TENEMOS LOS MEJORES CALZADOS DE BASQUET"
      
   return (
     <>

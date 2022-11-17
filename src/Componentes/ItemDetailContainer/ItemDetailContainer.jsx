@@ -4,6 +4,7 @@ import  ItemDetail  from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase/firebase"
 import { doc, getDoc, collection } from "firebase/firestore";
+import styled from "styled-components";
 
 
 
@@ -15,7 +16,7 @@ const ItemDetailContainer = () => {
       const [error, setError] = useState(false);
   
       useEffect(() => {
-        const productCollection = collection(db, 'product');
+        const productCollection = collection(db, 'listaProductos');
         const docRef = doc(productCollection,id)
         getDoc(docRef)
         .then((resultado) => {
@@ -35,7 +36,7 @@ const ItemDetailContainer = () => {
     }, [id]);
   
     return (
-      <>
+      <DetailContainer>
         {loading ? (
           <CircularProgress />
         ) : error ? (
@@ -43,8 +44,14 @@ const ItemDetailContainer = () => {
         ) : (
           <ItemDetail listProduct={listProduct} />
         )}
-      </>
+      </DetailContainer>
     );
   };
 
 export default ItemDetailContainer;
+
+const DetailContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
