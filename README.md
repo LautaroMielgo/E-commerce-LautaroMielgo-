@@ -31,7 +31,7 @@ Desarrollar un e-commerce que simule la realidad utilizando React JS para presen
 | Firebase | `Base de datos personalizada del proyecto`|
 
 ---------------------------------------------------
-##Links
+##Link
 
-[Link al Repositorio](https://github.com/LautaroMielgo/React-Lautaro-Mielgo)
-[Link a la Web](https://react-lautaromielgo.netlify.app)
+
+[Link a la Web](https://lautaro-mielgo-zapatillas.netlify.app/)
